@@ -93,10 +93,11 @@ function App() {
       return;
     }
 
-    let encoderValue = new TextEncoder("utf-8");
+    const resetEnergyExpended = Uint8Array.of(0x01, 0x01);
+    console.log("resetEnergyExpended: ", resetEnergyExpended);
     console.log("Setting Characteristic User Description...");
     characteristic
-      .writeValue(encoderValue.encode(characteristicWriteValue))
+      .wr(resetEnergyExpended)
       .then((_) => {
         console.log(
           "> Characteristic User Description changed to: " +
